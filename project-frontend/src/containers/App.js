@@ -41,6 +41,7 @@ class App extends Component {
       <Router>
         <div>
           <NavBar />
+          {/* <Login /> */}
           <Route exact path="/" render={()=> <div> Home Page!
             <br></br><br></br><h2>Test</h2>
             <div className="container">
