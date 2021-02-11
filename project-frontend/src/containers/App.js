@@ -42,13 +42,11 @@ class App extends Component {
         <div>
           <NavBar />
           <Route exact path="/" render={()=> <div> Home Page!
-
             <br></br><br></br><h2>Test</h2>
-
             <div className="container">
               <form onSubmit={this.handleSubmit}>
 
-              <input type="text" className="form-control" placeholder="test!" onChange={this.handleChange}></input>
+              <input type="text" placeholder="Search YouTube" b onChange={this.handleChange}></input>
                 <input type="submit" className="btn btn-danger"></input>
               </form>
               <div className="row">
