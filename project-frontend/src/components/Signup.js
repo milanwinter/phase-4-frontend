@@ -4,7 +4,7 @@ import FormFile from 'react-bootstrap/FormFile'
 import Button from 'react-bootstrap/Button'
 
 
-class Login extends Component {
+class Signup extends Component {
 
 
 
@@ -13,7 +13,7 @@ class Login extends Component {
         return(
             <div>
                 <Form>
-                    <Form.Label> Login</Form.Label>
+                    <Form.Label> Signup</Form.Label>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" placeholder="Enter email" onChange={(e) => this.props.handleLoginChange(e)}/>
@@ -26,11 +26,11 @@ class Login extends Component {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password" onChange={(e) => this.props.handleLoginChange(e)}/>
                     </Form.Group>
-                    <Button variant="primary" type="submit" onClick={(e) => this.props.handleLoginSubmit(e)}>
-                        Login
+                    <Button variant="primary" type="button" onClick={(e) => this.props.handleSignupSubmit(e)}>
+                        Signup!
                     </Button>
                     <Button variant="success" type="button" onClick={(e) => this.props.toggleLogin(e)}>
-                        Signup
+                        I already have an account
                     </Button>
                 </Form>
                 
@@ -39,4 +39,4 @@ class Login extends Component {
     }
 }
 
-export default Login
+export default Signup
