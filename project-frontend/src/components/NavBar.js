@@ -14,7 +14,19 @@ const NavBar = () => {
         style={{ marginRight: '10px' }} 
         to="/playlists"
       >
-        Movies
+        Playlists
+      </NavLink>
+      <NavLink 
+        style={{ marginRight: '10px' }} 
+        to="/videos"
+      >
+        Videos
+      </NavLink>
+      <NavLink 
+        style={{ marginRight: '10px' }} 
+        to="/profile"
+      >
+        Profile
       </NavLink>
     </div>
     )
