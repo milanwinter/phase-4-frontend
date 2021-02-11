@@ -9,10 +9,6 @@ import SearchResult from '../components/SearchResult'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-const endpoint = `https://www.googleapis.com/youtube/v3/search?`
-const key = `key=AIzaSyC4qGwOYnsvojMZx54JxEee0O7l1Is_n1g`
-const maxResults = `&type=video&part=snippet&maxResults=10&q=`
-
 class App extends Component {
 
   
