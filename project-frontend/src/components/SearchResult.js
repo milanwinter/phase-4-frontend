@@ -2,8 +2,8 @@ import React from 'react'
 import Video from '../components/Video'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Key from './APIKey'
-const endpoint = `https://www.googleapis.com/youtube/v3/search?`
 
+const endpoint = `https://www.googleapis.com/youtube/v3/search?`
 const maxResults = `&type=video&part=snippet&maxResults=10&q=`
 
 class SearchResult extends React.Component {
