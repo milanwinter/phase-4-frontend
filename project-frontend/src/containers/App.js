@@ -14,25 +14,7 @@ import Signup from '../components/Signup'
 class App extends Component {
 
   state = {
-    query: '',
-    videos: [],
     signup: false
-  }
-
-  //event handlers
-  handleSubmit = event => {
-    event.preventDefault()
-    console.log(`searching youtube for: ${this.state.query} `)
-    fetch(`${endpoint}${key}${maxResults}${this.state.query}`)
-    .then(res => res.json())
-    .then(videos => this.setState({
-      videos: videos.items
-    }))
-  }
-
-  handleChange = (e) => {
-    let query =  e.target.value
-    this.setState({query})
   }
 
   handleLoginChange = (e) => {
