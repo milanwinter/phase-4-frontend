@@ -24,13 +24,13 @@ class Login extends Component {
 
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control name="password" placeholder="Password" onChange={(e) => this.props.handleLoginChange(e)}/>
+                        <Form.Control name="password" type="password" placeholder="Password" onChange={(e) => this.props.handleLoginChange(e)}/>
                     </Form.Group>
                     <Button variant="primary" type="button" onClick={(e) => this.props.handleLoginSubmit(e)}>
                         Login
                     </Button>
                     <Button variant="success" type="button" onClick={(e) => this.props.toggleLogin(e)}>
-                        Signup
+                        I don't have an account Sign Me up
                     </Button>
                 </Form>
                 
