@@ -30,7 +30,7 @@ class Login extends Component {
                         Login
                     </Button>
                     <Button variant="success" type="button" onClick={(e) => this.props.toggleLogin(e)}>
-                        Signup
+                        I don't have an account Sign Me up
                     </Button>
                 </Form>
                 
