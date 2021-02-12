@@ -11,10 +11,6 @@ import Login from '../components/Login'
 import Signup from '../components/Signup'
 
 
-const endpoint = `https://www.googleapis.com/youtube/v3/search?`
-const key = `key=AIzaSyC4qGwOYnsvojMZx54JxEee0O7l1Is_n1g`
-const maxResults = `&type=video&part=snippet&maxResults=10&q=`
-
 class App extends Component {
 
   state = {
@@ -104,19 +100,7 @@ class App extends Component {
           <Login handleLoginChange={this.handleLoginChange} handleLoginSubmit={this.handleLoginSubmit} toggleLogin={this.toggleLogin} /> }
           <Route exact path="/" render={()=> <div> Home Page!
             <br></br><br></br><h2>Test</h2>
-            <div className="container">
-              <form onSubmit={this.handleSubmit}>
-
-              <input type="text" placeholder="Search YouTube" b onChange={this.handleChange}></input>
-                <input type="submit" className="btn btn-danger"></input>
-              </form>
-              <div className="row">
-                <div className="col-md-12">
-                  <SearchResult videos={this.state.videos}/>
-                  </div>
-              </div>
-
-            </div>
+            <SearchResult />
           </div>} />
           <Route path='/playlists' render={routerProps => <PlaylistContainer {...routerProps} />} />
           <Route path='/videos' render={routerProps => <VideoContainer {...routerProps} /> } />
