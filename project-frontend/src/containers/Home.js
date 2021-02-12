@@ -4,7 +4,7 @@ import Login from '../components/Login'
 import Signup from '../components/Signup'
 
 
-class Home extends Component {
+class HomeContainer extends Component {
 
     state = {
         loggedIn: false,
@@ -97,7 +97,7 @@ class Home extends Component {
     }
 }
 
-export default Home
+export default HomeContainer
 
 
 

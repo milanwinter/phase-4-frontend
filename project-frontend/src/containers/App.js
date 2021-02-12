@@ -9,7 +9,7 @@ import Profile from '../components/Profile'
 import SearchResult from '../components/SearchResult'
 import Login from '../components/Login'
 import Signup from '../components/Signup'
-import Home from './Home'
+import HomeContainer from './Home'
 
 
 class App extends Component {
