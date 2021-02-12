@@ -1,9 +1,8 @@
 import React from 'react'
 import Video from '../components/Video'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Key from './APIKey'
 const endpoint = `https://www.googleapis.com/youtube/v3/search?`
-const key = `key=AIzaSyC4qGwOYnsvojMZx54JxEee0O7l1Is_n1g`
 const maxResults = `&type=video&part=snippet&maxResults=10&q=`
 
 class SearchResult extends React.Component {
@@ -17,7 +16,7 @@ class SearchResult extends React.Component {
       handleSubmit = event => {
         event.preventDefault()
         console.log(`searching youtube for: ${this.state.query} `)
-        fetch(`${endpoint}${key}${maxResults}${this.state.query}`)
+        fetch(`${endpoint}${<Key />}${maxResults}${this.state.query}`)
         .then(res => res.json())
         .then(videos => this.setState({
           videos: videos.items
