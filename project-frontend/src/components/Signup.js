@@ -14,9 +14,9 @@ class Signup extends Component {
             <div>
                 <Form>
                     <Form.Label> Signup</Form.Label>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" onChange={(e) => this.props.handleLoginChange(e)}/>
+                    <Form.Group >
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control name="username" placeholder="Enter username" onChange={(e) => this.props.handleLoginChange(e)}/>
                         <Form.Text className="text-muted">
                         We'll never share your email with anyone else.
                         </Form.Text>
@@ -24,7 +24,7 @@ class Signup extends Component {
 
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" onChange={(e) => this.props.handleLoginChange(e)}/>
+                        <Form.Control name="password" type="password" placeholder="Password" onChange={(e) => this.props.handleLoginChange(e)}/>
                     </Form.Group>
                     <Button variant="primary" type="button" onClick={(e) => this.props.handleSignupSubmit(e)}>
                         Signup!

@@ -41,14 +41,30 @@ class App extends Component {
 
   handleLoginChange = (e) => {
     this.setState({
-      [e.target.type] : e.target.value
+      [e.target.name] : e.target.value
     })
   }
 
 
   handleLoginSubmit = (e) => {
-    e.preventDefault()
-    console.log(e.target)
+    let username = this.state.username
+    let password = this.state.password
+    let info = {username: username, password: password}
+    fetch("http://localhost:3000//api/v1/login",{
+      method: "POST",
+      headers: {
+        "Content-Type" : "application/json",
+        "Accept" : "application/json"
+      },
+      body: JSON.stringify({
+        user: info
+      })
+    })
+    .then(rsp => rsp.json())
+    .then(json => {
+      console.log(json)
+    })
+
   }
 
 
@@ -59,7 +75,23 @@ class App extends Component {
   }
 
   handleSignupSubmit = (e) => {
-    console.log(e.target)
+    let username = this.state.username
+    let password = this.state.password
+    let info = {username: username, password: password}
+    fetch("http://localhost:3000//api/v1/users/",{
+      method: "POST",
+      headers: {
+        "Content-Type" : "application/json",
+        "Accept" : "application/json"
+      },
+      body: JSON.stringify({
+        user: info
+      })
+    })
+    .then(rsp => rsp.json())
+    .then(json => {
+      console.log(json)
+    })
   }
 
 
