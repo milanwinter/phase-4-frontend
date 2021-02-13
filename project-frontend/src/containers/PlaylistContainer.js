@@ -34,7 +34,10 @@ class PlaylistContainer extends Component {
               user_id: 1
             })
         }).then(res => res.json())
-        .then(console.log)
+        .then(playlist => this.setState(prevState => ({
+            playlists: [...prevState.playlists, playlist]
+            })
+        ))
 }
 
 
@@ -47,8 +50,8 @@ class PlaylistContainer extends Component {
                     <input type="submit" className="btn btn-primary"></input>
                 </form>
                 {this.state.playlists.length > 0 ? this.state.playlists.map(playlist => {
-                    <Playlist playlist={playlist}/>
-                }): null}
+                    return <Playlist playlist={playlist}/>
+                }): <p>nope</p>}
 
             </div>
 
