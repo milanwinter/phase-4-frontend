@@ -1,12 +1,14 @@
 import React from 'react'
 
-const Playlist = (videos) => {
+class Playlist extends React.Component {
 
-    return (
-        <div>
-            {null}
+   render () {
+     return (
+        <div className="card">
+            <p>{this.props.playlist.title}</p>
         </div>
     )
+   }
 
 }
 export default Playlist
