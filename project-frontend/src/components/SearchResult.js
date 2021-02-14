@@ -9,7 +9,15 @@ class SearchResult extends React.Component {
     //query for user input, videos for list of results from search
     state = {
         query: '',
-        videos: []
+        videos: [],
+        playlists: [],
+        activeList: 1
+      }
+
+      componentDidMount() {
+        fetch('http://localhost:3000/playlists')
+        .then(resp => resp.json())
+        .then(playlists => this.setState({playlists}))
       }
     
       //event handlers
@@ -22,12 +30,12 @@ class SearchResult extends React.Component {
           videos: videos.items
         }))
       }
-    
+      //for users searching a video
       handleChange = (e) => {
         let query =  e.target.value
         this.setState({query})
       }
-
+      //function to add a video to a playlist
       newVideo = (video) => {
           fetch('http://localhost:3000/videos', {
               method: "POST",
@@ -37,10 +45,15 @@ class SearchResult extends React.Component {
               },
               body: JSON.stringify({
                 videoId: `${video.id.videoId}`,
-                playlist_id: 1
+                playlist_id: this.state.activeList
               })
           }).then(res => res.json())
           .then(console.log)
+      }
+      //handle state for dropdown
+      handleChoose(event) {
+        this.setState({
+          activeList: event.target.value});
       }
 
     render(){
@@ -52,12 +65,22 @@ class SearchResult extends React.Component {
                 </form>
                 <div className="row">
                     <div className="col-md-12">
+
+                      {/* select dropdown for playlists */}
+                      <select value={this.state.activeList} onChange={(e) => {this.handleChoose(e)}}>
+                        {this.state.playlists.length > 0 ? this.state.playlists.map(playlist => {
+                          return <option value={playlist.id}>{`${playlist.title}`}</option>
+                        }) : null}
+                      </select>
+
+                      {/* displays videos from the search */}
                         {this.state.videos.length > 0 ? this.state.videos.map(video => {
                             return (<div>
                               <Video video={video.id}/>
                               <button className="btn-danger"onClick={() => {this.newVideo(video)}}>Click me!</button>
                               </div>)
                         }): null}
+
                     </div>
                 </div>
             </div>
