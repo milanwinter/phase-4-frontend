@@ -9,11 +9,17 @@ class PlaylistContainer extends Component {
         fetch(`http://localhost:3000/playlists`)
         .then(res => res.json())
         .then(playlists => this.setState({playlists}))
+        .then(fetch('http://localhost:3000/videos')
+        .then(res => res.json())
+        .then(videos => this.setState({videos}))
+        )
+
     }
 
     state = {
         playlists: [],
-        newList: ''
+        newList: '',
+        videos: []
     }
 
     handleChange = (e) => {
@@ -50,7 +56,7 @@ class PlaylistContainer extends Component {
                     <input type="submit" className="btn btn-primary"></input>
                 </form>
                 {this.state.playlists.length > 0 ? this.state.playlists.map(playlist => {
-                    return <Playlist playlist={playlist}/>
+                    return <Playlist playlist={playlist} videos={this.state.videos}/>
                 }): <p>nope</p>}
 
             </div>

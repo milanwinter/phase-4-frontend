@@ -23,6 +23,7 @@ class App extends Component {
 
   render() {
     return (
+      
       <Router>
         <div>
           <NavBar />
@@ -35,6 +36,7 @@ class App extends Component {
           <Route path='/videos' render={routerProps => <VideoContainer {...routerProps} /> } />
           <Router path='/profile' render={routerProps => <Profile {...routerProps} /> } /> 
         </div>
+        <div><SearchResult /></div>
       </Router>
     );
   }

@@ -16,7 +16,7 @@ class SearchResult extends React.Component {
       handleSubmit = event => {
         event.preventDefault()
         console.log(`searching youtube for: ${this.state.query} `)
-        fetch(`${endpoint}${<Key />}${maxResults}${this.state.query}`)
+        fetch(`${endpoint}${Key}${maxResults}${this.state.query}`)
         .then(res => res.json())
         .then(videos => this.setState({
           videos: videos.items
@@ -26,6 +26,21 @@ class SearchResult extends React.Component {
       handleChange = (e) => {
         let query =  e.target.value
         this.setState({query})
+      }
+
+      newVideo = (video) => {
+          fetch('http://localhost:3000/videos', {
+              method: "POST",
+              headers: {
+                "Content-Type" : "application/json",
+                "Accept" : "application/json"
+              },
+              body: JSON.stringify({
+                videoId: `${video.id.videoId}`,
+                playlist_id: 1
+              })
+          }).then(res => res.json())
+          .then(console.log)
       }
 
     render(){
@@ -38,7 +53,10 @@ class SearchResult extends React.Component {
                 <div className="row">
                     <div className="col-md-12">
                         {this.state.videos.length > 0 ? this.state.videos.map(video => {
-                            return (<Video video={video}/>)
+                            return (<div>
+                              <Video video={video.id}/>
+                              <button className="btn-danger"onClick={() => {this.newVideo(video)}}>Click me!</button>
+                              </div>)
                         }): null}
                     </div>
                 </div>
