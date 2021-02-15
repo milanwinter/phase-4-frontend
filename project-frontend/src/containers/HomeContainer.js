@@ -37,13 +37,13 @@ class HomeContainer extends Component {
         })
         .then(rsp => rsp.json())
         .then(json => {
-          console.log(json)
           this.setState({
               loggedIn: !this.state.loggedIn,
               user: json.user.username,
               userId: json.user.id
           })
           localStorage.setItem("token", json.jwt)
+          this.props.handleUserInfo(json.user.id)
         })
     
       }

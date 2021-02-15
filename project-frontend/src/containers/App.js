@@ -15,9 +15,14 @@ import HomeContainer from './HomeContainer'
 class App extends Component {
 
   state = {
-    userInfo: {}
+    userId: {}
   }
 
+  handleUserInfo = (info) => {
+    this.setState({
+      userId: info
+    })
+  }
 
 
   render() {
@@ -28,12 +33,12 @@ class App extends Component {
           <NavBar />
           {/* <Route exact path="/" render={()=> <div> Home Page!
             <br></br><br></br><h2>Test</h2>
-            <SearchResult />
+            // <SearchResult />
           </div>} /> */}
-          <Route exact path='/' render={routerProps => <HomeContainer {...routerProps} />} />
+          <Route exact path='/' render={routerProps => <HomeContainer {...routerProps} handleUserInfo={this.handleUserInfo} />} />
           {/* <Route path='/playlists' render={routerProps => <PlaylistContainer {...routerProps} />} /> */}
-          <Route path='/videos' render={routerProps => <VideoContainer {...routerProps} /> } />
-          <Router path='/profile' render={routerProps => <Profile {...routerProps} /> } /> 
+          <Route exact path='/videos' render={routerProps => <VideoContainer {...routerProps} userId={this.state.userId} /> } />
+          <Router exact path='/profile' render={routerProps => <Profile {...routerProps} userId={this.state.userId} /> } /> 
         </div>
       </Router>
     );

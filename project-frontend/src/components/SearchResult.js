@@ -17,7 +17,15 @@ class SearchResult extends React.Component {
       componentDidMount() {
         fetch('http://localhost:3000/playlists')
         .then(resp => resp.json())
-        .then(playlists => this.setState({playlists}))
+        .then(data => { 
+          console.log(data)
+          let playlists = data.filter(playlist => playlist.user.id == this.props.userId)
+          console.log(playlists)
+          this.setState({
+            playlists: playlists
+          })
+        })
+
       }
     
       //event handlers
@@ -54,6 +62,7 @@ class SearchResult extends React.Component {
       }
       //handle state for dropdown
       handleChoose(event) {
+        console.log(event.target.value)
         this.setState({
           activeList: event.target.value});
       }

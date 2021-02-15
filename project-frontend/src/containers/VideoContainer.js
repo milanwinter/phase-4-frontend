@@ -7,7 +7,7 @@ class VideoContainer extends Component {
 
     render() {
         return(
-            <div><SearchResult /></div>
+            <div><SearchResult userId={this.props.userId}/></div>
         )
     }
 }

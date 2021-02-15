@@ -15,7 +15,6 @@ class PlaylistContainer extends Component {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data.user.playlists,data.user.videos)
             this.setState({
                 playlists: data.user.playlists,
                 videos: data.user.videos
