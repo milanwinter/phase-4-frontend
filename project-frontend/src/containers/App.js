@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, {Component} from 'react'
+import React, {Component,Redirect} from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import NavBar from '../components/NavBar'
 import Menu from '../components/Menu'
@@ -24,13 +24,17 @@ class App extends Component {
     })
   }
 
+  signOut = () => {
+    localStorage.clear("token");
+    <Redirect to="/" />
+  }
 
   render() {
     return (
       
       <Router>
         <div>
-          <NavBar />
+          <NavBar signOut={this.signOut} />
           {/* <Route exact path="/" render={()=> <div> Home Page!
             <br></br><br></br><h2>Test</h2>
             // <SearchResult />

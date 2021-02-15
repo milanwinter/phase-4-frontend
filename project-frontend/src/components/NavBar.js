@@ -1,7 +1,8 @@
+import Button from 'react-bootstrap/Button'
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 
-const NavBar = () => {
+const NavBar = (props) => {
     return (
         <div style={{ borderBottom: '2px solid black', paddingBottom: '10px', marginBottom: '12px' }}>
       <NavLink 
@@ -28,6 +29,8 @@ const NavBar = () => {
       >
         Profile
       </NavLink>
+
+      <Button onClick={props.signOut}>Logout</Button>
     </div>
     )
 }

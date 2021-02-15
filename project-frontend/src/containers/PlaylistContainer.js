@@ -1,4 +1,4 @@
-import React ,{Component} from 'react'
+import React ,{Component,Redirect} from 'react'
 import {Route} from 'react-router-dom'
 import Playlist from '../components/Playlist'
 
@@ -6,7 +6,7 @@ class PlaylistContainer extends Component {
 
     componentDidMount() {
         let token = localStorage.getItem("token")
-        console.log('component did mount ran')
+        token ? (
         fetch(`http://localhost:3000/api/v1/profile`,{
             method: "GET",
             headers: {
@@ -20,7 +20,7 @@ class PlaylistContainer extends Component {
                 videos: data.user.videos
             })
         })
-        
+    ) : <Redirect to="/" />
     }
 
     state = {

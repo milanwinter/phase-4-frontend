@@ -49,7 +49,8 @@ class HomeContainer extends Component {
       }
     
       loggedIn = () => {
-          if (this.state.loggedIn) {
+        let token = localStorage.getItem("token")
+          if (token) {
               return <PlaylistContainer userId={this.state.userId}/>
           } else {
               if (this.state.signup) {
