@@ -30,7 +30,7 @@ class App extends Component {
             <br></br><br></br><h2>Test</h2>
             <SearchResult />
           </div>} /> */}
-          <Route path='/' render={routerProps => <Home {...routerProps} />} />
+          <Route path='/' render={routerProps => <HomeContainer {...routerProps} />} />
           <Route path='/playlists' render={routerProps => <PlaylistContainer {...routerProps} />} />
           <Route path='/videos' render={routerProps => <VideoContainer {...routerProps} /> } />
           <Router path='/profile' render={routerProps => <Profile {...routerProps} /> } /> 

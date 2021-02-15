@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Button from 'react-bootstrap/Button'
 import Login from '../components/Login'
 import Signup from '../components/Signup'
+import HomePage from '../components/HomePage'
 
 
 class HomeContainer extends Component {
@@ -38,7 +39,7 @@ class HomeContainer extends Component {
           console.log(json)
           this.setState({
               loggedIn: !this.state.loggedIn,
-              user: json.user.username,
+              user: json.user,
               jwt: json.jwt
           })
         })
@@ -47,7 +48,7 @@ class HomeContainer extends Component {
     
       loggedIn = () => {
           if (this.state.loggedIn) {
-              return <h1> Welcome {this.state.user}!!!</h1>
+              return <HomePage user={this.state.user} />
           } else {
               if (this.state.signup) {
                   return <Signup toggleLogin={this.toggleLogin}  handleLoginChange={this.handleLoginChange} handleSignupSubmit={this.handleSignupSubmit}/>
