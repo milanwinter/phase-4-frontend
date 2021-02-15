@@ -9,15 +9,14 @@ import Profile from '../components/Profile'
 import SearchResult from '../components/SearchResult'
 import Login from '../components/Login'
 import Signup from '../components/Signup'
-import HomeContainer from './Home'
+import HomeContainer from './HomeContainer'
 
 
 class App extends Component {
 
   state = {
-    signup: false
+    userInfo: {}
   }
-
 
 
 
@@ -31,8 +30,8 @@ class App extends Component {
             <br></br><br></br><h2>Test</h2>
             <SearchResult />
           </div>} /> */}
-          <Route path='/' render={routerProps => <HomeContainer {...routerProps} />} />
-          <Route path='/playlists' render={routerProps => <PlaylistContainer {...routerProps} />} />
+          <Route exact path='/' render={routerProps => <HomeContainer {...routerProps} />} />
+          {/* <Route path='/playlists' render={routerProps => <PlaylistContainer {...routerProps} />} /> */}
           <Route path='/videos' render={routerProps => <VideoContainer {...routerProps} /> } />
           <Router path='/profile' render={routerProps => <Profile {...routerProps} /> } /> 
         </div>

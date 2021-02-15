@@ -5,15 +5,23 @@ import Playlist from '../components/Playlist'
 class PlaylistContainer extends Component {
 
     componentDidMount() {
+        let token = localStorage.getItem("token")
         console.log('component did mount ran')
-        fetch(`http://localhost:3000/playlists`)
+        fetch(`http://localhost:3000/api/v1/profile`,{
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
         .then(res => res.json())
-        .then(playlists => this.setState({playlists}))
-        .then(fetch('http://localhost:3000/videos')
-        .then(res => res.json())
-        .then(videos => this.setState({videos}))
-        )
-
+        .then(data => {
+            console.log(data.user.playlists,data.user.videos)
+            this.setState({
+                playlists: data.user.playlists,
+                videos: data.user.videos
+            })
+        })
+        
     }
 
     state = {
@@ -29,15 +37,17 @@ class PlaylistContainer extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        let token = localStorage.getItem("token")
         fetch('http://localhost:3000/playlists', {
             method: "POST",
             headers: {
+              "Authorization" : `Bearer ${token}`,
               "Content-Type" : "application/json",
               "Accept" : "application/json"
             },
             body: JSON.stringify({
               name: `${this.state.newList}`,
-              user_id: 1
+              user_id: this.props.userId
             })
         }).then(res => res.json())
         .then(playlist => this.setState(prevState => ({

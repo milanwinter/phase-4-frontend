@@ -37,9 +37,11 @@ class SearchResult extends React.Component {
       }
       //function to add a video to a playlist
       newVideo = (video) => {
+        let token = localStorage.getItem("token")
           fetch('http://localhost:3000/videos', {
               method: "POST",
               headers: {
+                "Authorization" : `Bearer ${token}`,
                 "Content-Type" : "application/json",
                 "Accept" : "application/json"
               },

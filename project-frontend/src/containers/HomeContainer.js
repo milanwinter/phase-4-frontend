@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button'
 import Login from '../components/Login'
 import Signup from '../components/Signup'
 import HomePage from '../components/HomePage'
+import PlaylistContainer from './PlaylistContainer'
 
 
 class HomeContainer extends Component {
@@ -11,7 +12,7 @@ class HomeContainer extends Component {
         loggedIn: false,
         signup: false,
         user: "",
-        jwt: ""
+        userId: 1
     }
     handleLoginChange = (e) => {
         this.setState({
@@ -39,16 +40,17 @@ class HomeContainer extends Component {
           console.log(json)
           this.setState({
               loggedIn: !this.state.loggedIn,
-              user: json.user,
-              jwt: json.jwt
+              user: json.user.username,
+              userId: json.user.id
           })
+          localStorage.setItem("token", json.jwt)
         })
     
       }
     
       loggedIn = () => {
           if (this.state.loggedIn) {
-              return <HomePage user={this.state.user} />
+              return <PlaylistContainer userId={this.state.userId}/>
           } else {
               if (this.state.signup) {
                   return <Signup toggleLogin={this.toggleLogin}  handleLoginChange={this.handleLoginChange} handleSignupSubmit={this.handleSignupSubmit}/>
@@ -83,8 +85,9 @@ class HomeContainer extends Component {
           this.setState({
             loggedIn: !this.state.loggedIn,
             user: json.user.username,
-            jwt: json.jwt
+            userId: json.user.id
           })
+          localStorage.setItem("token", json.jwt)
         })
       }
 
