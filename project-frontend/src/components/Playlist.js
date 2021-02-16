@@ -1,5 +1,7 @@
 import React from 'react'
 import Video from './Video'
+import { Carousel } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Playlist extends React.Component {
 
