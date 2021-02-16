@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {Component} from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import NavBar from '../components/NavBar'
+import NavigationBar from '../components/NavBar'
 import Menu from '../components/Menu'
 import PlaylistContainer from './PlaylistContainer'
 import VideoContainer from './VideoContainer'
@@ -38,7 +38,7 @@ class App extends Component {
       
       <Router>
         <div>
-          <NavBar signOut={this.signOut} />
+          <NavigationBar signOut={this.signOut} />
 
           {localStorage.getItem("token") ? <Logout logOut={this.logOut}/> : null}
           <Route exact path='/' render={routerProps => <HomeContainer {...routerProps} handleUserInfo={this.handleUserInfo} />} />
