@@ -9,14 +9,11 @@ import SearchResult from '../components/SearchResult'
 import Login from '../components/Login'
 import Signup from '../components/Signup'
 import HomeContainer from './HomeContainer'
-import { Redirect } from "react-router-dom";
 import Logout from '../components/Logout'
+import ProfileContainer from './ProfileContainer'
 
 class App extends Component {
 
-  state = {
-    userId: {},
-  }
 
   handleUserInfo = (info) => {
     this.setState({
@@ -34,9 +31,9 @@ class App extends Component {
           <NavigationBar signOut={this.signOut} />
           <div >
           <Route exact path='/' render={routerProps => <HomeContainer {...routerProps} handleUserInfo={this.handleUserInfo} />} />
-          <Route exact path='/playlists' render={routerProps => <PlaylistContainer {...routerProps} userId={this.state.userId} auth={this.state.isAuthenticated}/> } />
-          <Route exact path='/videos' render={routerProps => <VideoContainer {...routerProps} userId={this.state.userId} auth={this.state.isAuthenticated}/> } />
-          <Route exact path='/profile' render={routerProps => <Profile {...routerProps} userId={this.state.userId} auth={this.state.isAuthenticated} /> } /> 
+          <Route exact path='/profile' render={routerProps => <ProfileContainer {...routerProps} /> } />
+          <Route exact path='/videos' render={routerProps => <VideoContainer {...routerProps} /> } />
+          {/* <Route exact path='/' render={routerProps => <Profile {...routerProps} userId={this.state.userId} auth={this.state.isAuthenticated} /> } />  */}
           </div>
         </div>
       </Router>
