@@ -4,7 +4,8 @@ import Video from './Video'
 class Playlist extends React.Component {
 
     state = {
-        active: false
+        active: false,
+        likes: 0
     }
     toggleActive= () => {
         this.setState({
