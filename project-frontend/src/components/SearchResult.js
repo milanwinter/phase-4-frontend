@@ -22,7 +22,8 @@ class SearchResult extends React.Component {
           let playlists = data.filter(playlist => playlist.user.id == this.props.userId)
           console.log(playlists)
           this.setState({
-            playlists: playlists
+            playlists: playlists,
+            activeList: playlists[0].id
           })
         })
 
