@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {Component} from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import NavigationBar from '../components/NavBar'
+import NavigationBar from '../components/NavigationBar'
 import Menu from '../components/Menu'
 import PlaylistContainer from './PlaylistContainer'
 import VideoContainer from './VideoContainer'
