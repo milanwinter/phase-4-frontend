@@ -45,8 +45,7 @@ class HomeContainer extends Component {
           })
           localStorage.setItem("token", json.jwt)
           localStorage.setItem("user",json.user.id)
-          this.props.handleUserInfo(json.user.id);
-          this.props.history.push("/playlists")
+          this.props.history.push("/profile")
         })
     
       }
@@ -93,8 +92,7 @@ class HomeContainer extends Component {
           })
           localStorage.setItem("token", json.jwt)
           localStorage.setItem("user",json.user.id)
-          this.props.handleUserInfo(json.user.id);
-          this.props.history.push("/playlists")
+          this.props.history.push("/profile")
         })
       }
 
