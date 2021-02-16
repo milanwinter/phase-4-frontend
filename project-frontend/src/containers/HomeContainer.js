@@ -92,7 +92,7 @@ class HomeContainer extends Component {
           })
           localStorage.setItem("token", json.jwt)
           this.props.handleUserInfo(json.user.id);
-          <Redirect to="/playlists" />
+          this.props.history.push("/playlists")
         })
       }
 
