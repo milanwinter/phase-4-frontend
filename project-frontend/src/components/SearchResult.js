@@ -1,6 +1,8 @@
 import React from 'react'
 import Video from '../components/Video'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import DropdownButton from 'react-bootstrap/DropdownButton'
+import Dropdown from 'react-bootstrap/Dropdown'
 import Key from './APIKey'
 const endpoint = `https://www.googleapis.com/youtube/v3/search?`
 const maxResults = `&type=video&part=snippet&maxResults=10&q=`
@@ -18,7 +20,6 @@ class SearchResult extends React.Component {
         fetch('http://localhost:3000/playlists')
         .then(resp => resp.json())
         .then(data => { 
-          console.log(data)
           let playlists = data.filter(playlist => playlist.user.id == this.props.userId)
           console.log(playlists)
           this.setState({
@@ -66,6 +67,25 @@ class SearchResult extends React.Component {
         console.log(event.target.value)
         this.setState({
           activeList: event.target.value});
+
+      }
+
+
+      experimentalChoice = (e,id,video) => {
+        let token = localStorage.getItem("token")
+          fetch('http://localhost:3000/videos', {
+              method: "POST",
+              headers: {
+                "Authorization" : `Bearer ${token}`,
+                "Content-Type" : "application/json",
+                "Accept" : "application/json"
+              },
+              body: JSON.stringify({
+                videoId: `${video.id.videoId}`,
+                playlist_id: id
+              })
+          }).then(res => res.json())
+          .then(console.log)
       }
 
     render(){
@@ -89,7 +109,15 @@ class SearchResult extends React.Component {
                         {this.state.videos.length > 0 ? this.state.videos.map(video => {
                             return (<div>
                               <Video video={video.id}/>
-                              <button className="btn-danger"onClick={() => {this.newVideo(video)}}>Click me!</button>
+                              <DropdownButton id="dropdown-basic-button" title="Dropdown button">
+                                {this.state.playlists.map(playlist => {
+                                  return <Dropdown.Item onClick={(e)=> this.experimentalChoice(e,playlist.id,video)} value={playlist.id} >{playlist.title}</Dropdown.Item>
+                                })}
+                                {/* <Dropdown.Item onClick={(e)=> this.experimentalChoice(e)}>Action</Dropdown.Item>
+                                <Dropdown.Item onClick={(e)=> this.experimentalChoice(e)}>Another action</Dropdown.Item>
+                                <Dropdown.Item onClick={(e)=> this.experimentalChoice(e)}>Something else</Dropdown.Item> */}
+                              </DropdownButton>
+                              {/* <button className="btn-danger"onClick={() => {this.newVideo(video)}}>Click me!</button> */}
                               </div>)
                         }): null}
 
