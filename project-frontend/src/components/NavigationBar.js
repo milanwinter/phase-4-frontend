@@ -7,9 +7,15 @@ import {Nav} from 'react-bootstrap'
 
 const NavigationBar = (props) => {
 
+  const logout = () => {
+    localStorage.clear("token","user")
+    window.location.href = "/"
+  }
+
     
     return (
     <div >
+      <Container>
             <Navbar bg="dark" variant="dark">
               <Navbar.Brand >Website Name?</Navbar.Brand>
               <Nav className="mr-auto">
@@ -17,8 +23,10 @@ const NavigationBar = (props) => {
                 <Nav.Link href="/playlists">Playlists</Nav.Link>
                 <Nav.Link href="/videos">Search Videos</Nav.Link>
                 <Nav.Link href="/profile"> Profile</Nav.Link>
+                <Nav.Link href="#" onSelect={logout}> Logout</Nav.Link>
               </Nav>
             </Navbar>
+      </Container>
     </div>
     )
 }
