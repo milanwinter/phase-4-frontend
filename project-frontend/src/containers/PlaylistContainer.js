@@ -38,6 +38,7 @@ class PlaylistContainer extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         let token = localStorage.getItem("token")
+       let userId = localStorage.getItem("user")
         fetch('http://localhost:3000/playlists', {
             method: "POST",
             headers: {
@@ -47,7 +48,7 @@ class PlaylistContainer extends Component {
             },
             body: JSON.stringify({
               name: `${this.state.newList}`,
-              user_id: this.props.userId
+              user_id: userId
             })
         }).then(res => res.json())
         .then(playlist => this.setState(prevState => ({

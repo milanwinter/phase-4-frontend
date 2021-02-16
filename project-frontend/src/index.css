@@ -5,9 +5,21 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: paleturquoise;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.Login-container {
+  display: flex;
+  justify-content: left;
+
+}
+
+.Login-item {
+  flex-basis: auto;
 }

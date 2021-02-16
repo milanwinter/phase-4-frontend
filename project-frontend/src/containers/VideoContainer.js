@@ -10,9 +10,8 @@ class VideoContainer extends Component {
     }
 
     checkAuth = () => {
-        if (!this.props.auth) {
-            this.props.history.push("/")
-        }
+        let token = localStorage.getItem("token")
+       token ? console.log("hi") : this.props.history.push("/")
     }
     render() {
         return(

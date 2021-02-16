@@ -9,11 +9,8 @@ class Profile extends Component {
      }
  
      checkAuth = () => {
-         console.log("before if else statement")
-         if (!this.props.auth) {
-             console.log("in profile")
-             this.props.history.push("/")
-         }
+         let token = localStorage.getItem("token")
+        token ? console.log("hi") : this.props.history.push("/")
      }
 
     render() {
