@@ -1,6 +1,7 @@
 import React ,{Component,Redirect} from 'react'
 import {Route} from 'react-router-dom'
 import Playlist from '../components/Playlist'
+import { withRouter } from 'react-router';
 
 class PlaylistContainer extends Component {
 
@@ -20,7 +21,7 @@ class PlaylistContainer extends Component {
                 videos: data.user.videos
             })
         })
-    ) : <Redirect to="/" />
+    ) : this.props.history.push("/") 
     }
 
     state = {
