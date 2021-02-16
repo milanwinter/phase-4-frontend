@@ -16,20 +16,22 @@ import Logout from '../components/Logout'
 class App extends Component {
 
   state = {
-    userId: {}
+    userId: {},
+    isAuthenticated: false
   }
 
   handleUserInfo = (info) => {
     this.setState({
-      userId: info
+      userId: info,
+      isAuthenticated: true
     })
   }
 
-  // signOut = () => {
-  //   localStorage.clear("token");
-  //   <Redirect to="/" />
-    
-  // }
+  logOut = () => {
+    this.setState({
+      isAuthenticated: false
+    })
+  }
 
   render() {
     return (
@@ -38,11 +40,11 @@ class App extends Component {
         <div>
           <NavBar signOut={this.signOut} />
 
-          {localStorage.getItem("token") ? <Logout /> : null}
+          {localStorage.getItem("token") ? <Logout logOut={this.logOut}/> : null}
           <Route exact path='/' render={routerProps => <HomeContainer {...routerProps} handleUserInfo={this.handleUserInfo} />} />
-          <Route exact path='/playlists' render={routerProps => <PlaylistContainer {...routerProps} userId={this.state.userId}/> } />
-          <Route exact path='/videos' render={routerProps => <VideoContainer {...routerProps} userId={this.state.userId} /> } />
-          <Router exact path='/profile' render={routerProps => <Profile {...routerProps} userId={this.state.userId} /> } /> 
+          <Route exact path='/playlists' render={routerProps => <PlaylistContainer {...routerProps} userId={this.state.userId} auth={this.state.isAuthenticated}/> } />
+          <Route exact path='/videos' render={routerProps => <VideoContainer {...routerProps} userId={this.state.userId} auth={this.state.isAuthenticated}/> } />
+          <Router exact path='/profile' render={routerProps => <Profile {...routerProps} userId={this.state.userId} auth={this.state.isAuthenticated} /> } /> 
         </div>
       </Router>
     );
