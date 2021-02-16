@@ -17,14 +17,15 @@ class SearchResult extends React.Component {
       }
 
       componentDidMount() {
+        let userId = localStorage.getItem("user")
         fetch('http://localhost:3000/playlists')
         .then(resp => resp.json())
         .then(data => { 
-          let playlists = data.filter(playlist => playlist.user.id == this.props.userId)
+          let playlists = data.filter(playlist => playlist.user.id == userId)
+          console.log("in the video fetch")
           console.log(playlists)
           this.setState({
-            playlists: playlists,
-            activeList: playlists[0].id
+            playlists: playlists
           })
         })
 
@@ -99,17 +100,17 @@ class SearchResult extends React.Component {
                     <div className="col-md-12">
 
                       {/* select dropdown for playlists */}
-                      <select value={this.state.activeList} onChange={(e) => {this.handleChoose(e)}}>
+                      {/* <select value={this.state.activeList} onChange={(e) => {this.handleChoose(e)}}>
                         {this.state.playlists.length > 0 ? this.state.playlists.map(playlist => {
                           return <option value={playlist.id}>{`${playlist.title}`}</option>
                         }) : null}
-                      </select>
+                      </select> */}
 
                       {/* displays videos from the search */}
                         {this.state.videos.length > 0 ? this.state.videos.map(video => {
                             return (<div>
                               <Video video={video.id}/>
-                              <DropdownButton id="dropdown-basic-button" title="Dropdown button">
+                              <DropdownButton id="dropdown-basic-button" title="Add Video to Playlist">
                                 {this.state.playlists.map(playlist => {
                                   return <Dropdown.Item onClick={(e)=> this.experimentalChoice(e,playlist.id,video)} value={playlist.id} >{playlist.title}</Dropdown.Item>
                                 })}
