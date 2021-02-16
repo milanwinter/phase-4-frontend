@@ -1,8 +1,15 @@
-import React ,{Component} from 'react'
+import React ,{Component, Redirect} from 'react'
 import {Route} from 'react-router-dom'
 import SearchResult from '../components/SearchResult'
 
 class VideoContainer extends Component {
+
+    componentDidMount() {
+        let token = localStorage.getItem("token")
+        if (!token) {
+            < Redirect to="/" />
+        }
+    }
 
 
     render() {

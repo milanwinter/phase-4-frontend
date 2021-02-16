@@ -4,6 +4,7 @@ import Login from '../components/Login'
 import Signup from '../components/Signup'
 import HomePage from '../components/HomePage'
 import PlaylistContainer from './PlaylistContainer'
+import { Redirect } from "react-router-dom";
 
 
 class HomeContainer extends Component {
@@ -43,7 +44,8 @@ class HomeContainer extends Component {
               userId: json.user.id
           })
           localStorage.setItem("token", json.jwt)
-          this.props.handleUserInfo(json.user.id)
+          this.props.handleUserInfo(json.user.id);
+          this.props.history.push("/playlists")
         })
     
       }
@@ -51,7 +53,7 @@ class HomeContainer extends Component {
       loggedIn = () => {
         let token = localStorage.getItem("token")
           if (token) {
-              return <PlaylistContainer userId={this.state.userId}/>
+               <Redirect to="/playlists" />
           } else {
               if (this.state.signup) {
                   return <Signup toggleLogin={this.toggleLogin}  handleLoginChange={this.handleLoginChange} handleSignupSubmit={this.handleSignupSubmit}/>
@@ -88,7 +90,8 @@ class HomeContainer extends Component {
             user: json.user.username,
             userId: json.user.id
           })
-          localStorage.setItem("token", json.jwt)
+          localStorage.setItem("token", json.jwt);
+          <Redirect to="/playlists" />
         })
       }
 
@@ -103,18 +106,3 @@ class HomeContainer extends Component {
 }
 
 export default HomeContainer
-
-
-
-// if (this.state.loggedIn) {
-//     return <h1> Home Page</h1>
-// } else if (!this.state.loggedIn) {
-//     return (
-//         <Login handleLoginChange={this.handleLoginChange} handleLoginSubmit={this.handleLoginSubmit} toggleLogin={this.toggleLogin} />
-//     )
-    
-// } else if (this.state.signup) {
-//     return (
-//         <Signup toggleLogin={this.toggleLogin}  handleLoginChange={this.handleLoginChange} handleSignupSubmit={this.handleSignupSubmit}/>
-//     )
-// }

@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, {Component,Redirect} from 'react'
+import React, {Component} from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import NavBar from '../components/NavBar'
 import Menu from '../components/Menu'
@@ -10,7 +10,8 @@ import SearchResult from '../components/SearchResult'
 import Login from '../components/Login'
 import Signup from '../components/Signup'
 import HomeContainer from './HomeContainer'
-
+import { Redirect } from "react-router-dom";
+import Logout from '../components/Logout'
 
 class App extends Component {
 
@@ -24,10 +25,11 @@ class App extends Component {
     })
   }
 
-  signOut = () => {
-    localStorage.clear("token");
-    <Redirect to="/" />
-  }
+  // signOut = () => {
+  //   localStorage.clear("token");
+  //   <Redirect to="/" />
+    
+  // }
 
   render() {
     return (
@@ -35,12 +37,10 @@ class App extends Component {
       <Router>
         <div>
           <NavBar signOut={this.signOut} />
-          {/* <Route exact path="/" render={()=> <div> Home Page!
-            <br></br><br></br><h2>Test</h2>
-            // <SearchResult />
-          </div>} /> */}
+
+          {localStorage.getItem("token") ? <Logout /> : null}
           <Route exact path='/' render={routerProps => <HomeContainer {...routerProps} handleUserInfo={this.handleUserInfo} />} />
-          {/* <Route path='/playlists' render={routerProps => <PlaylistContainer {...routerProps} />} /> */}
+          <Route exact path='/playlists' render={routerProps => <PlaylistContainer {...routerProps} userId={this.state.userId}/> } />
           <Route exact path='/videos' render={routerProps => <VideoContainer {...routerProps} userId={this.state.userId} /> } />
           <Router exact path='/profile' render={routerProps => <Profile {...routerProps} userId={this.state.userId} /> } /> 
         </div>
