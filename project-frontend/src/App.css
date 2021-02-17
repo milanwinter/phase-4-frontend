@@ -48,3 +48,15 @@
 .Login-item {
   flex-basis: auto;
 }
+
+.profile-container {
+  display: flex
+}
+
+.regular-playlists {
+ flex-basis: auto
+}
+
+.liked-playlists {
+  flex-basis: auto
+}

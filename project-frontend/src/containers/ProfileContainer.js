@@ -4,6 +4,8 @@ import Container from 'react-bootstrap/Container';
 import LikedPlaylistContainer from './LikedPlaylistContainer'
 import { withRouter } from 'react-router';
 import {Route} from 'react-router-dom'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 class ProfileContainer extends Component {
 
@@ -15,15 +17,18 @@ class ProfileContainer extends Component {
 
     render() {
         return (
-            <div >
-                <Container>
-                    <h1> Hello from Profile container</h1>
-                    <h1> Your Playlists</h1>
-                    <PlaylistContainer history={this.props.history}/>
-
-                    <h1> Your Liked Playlists</h1>
-                    <LikedPlaylistContainer />
-                    
+            <div className="profile-container" >
+                <Container >
+                    <Row>
+                        <Col>
+                        <h1> Your Playlists</h1>
+                        <PlaylistContainer history={this.props.history}/>
+                        </Col>
+                        <Col>
+                        <h1> Your Liked Playlists</h1>
+                        <LikedPlaylistContainer />
+                        </Col>
+                    </Row>
                 </Container>
             </div>
 
