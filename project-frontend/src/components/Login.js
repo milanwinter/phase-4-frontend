@@ -13,6 +13,7 @@ class Login extends Component {
     render() {
         return(
             <div className="Login-container">
+                <Container>
                     <Form className="Login-item">
                         <Form.Label> Login</Form.Label>
                         <Form.Group >
@@ -35,6 +36,7 @@ class Login extends Component {
                             I don't have an account Sign Me up
                         </Button>
                     </Form>
+                    </Container>
                 
             </div>
         )

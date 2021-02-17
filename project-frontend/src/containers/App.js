@@ -12,6 +12,8 @@ import HomeContainer from './HomeContainer'
 import Logout from '../components/Logout'
 import ProfileContainer from './ProfileContainer'
 import PublicPlaylistContainer from './PublicPlaylistContainer'
+import HomePage from './HomePage'
+
 
 class App extends Component {
 
@@ -32,6 +34,7 @@ class App extends Component {
           <NavigationBar signOut={this.signOut} />
           <div >
           <Route exact path='/' render={routerProps => <HomeContainer {...routerProps} handleUserInfo={this.handleUserInfo} />} />
+          <Route exaxt path='/home' render={routerProps => <HomePage {...routerProps} /> } />
           <Route exact path='/profile' render={routerProps => <ProfileContainer {...routerProps} /> } />
           <Route exact path='/videos' render={routerProps => <VideoContainer {...routerProps} /> } />
           <Route exact path='/playlists' render={routerProps => <PublicPlaylistContainer {...routerProps} /> } />

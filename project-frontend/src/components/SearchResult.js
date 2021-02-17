@@ -21,10 +21,7 @@ class SearchResult extends React.Component {
         fetch('http://localhost:3000/playlists')
         .then(resp => resp.json())
         .then(data => { 
-          console.log(data)
           let playlists = data.filter(playlist => playlist.user.id == userId)
-          console.log("in the video fetch")
-          console.log(playlists)
           this.setState({
             playlists: playlists
           })
@@ -35,7 +32,6 @@ class SearchResult extends React.Component {
       //event handlers
       handleSubmit = event => {
         event.preventDefault()
-        console.log(`searching youtube for: ${this.state.query} `)
         fetch(`${endpoint}${Key}${maxResults}${this.state.query}`)
         .then(res => res.json())
         .then(videos => this.setState({

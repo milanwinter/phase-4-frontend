@@ -19,7 +19,7 @@ const NavigationBar = (props) => {
             <Navbar bg="dark" variant="dark">
               <Navbar.Brand >Website Name?</Navbar.Brand>
               <Nav className="mr-auto">
-                <Nav.Link href="/"> Home </Nav.Link>
+                <Nav.Link href="/home"> Home </Nav.Link>
                 <Nav.Link href="/profile"> My Profile/Playlists</Nav.Link>
                 <Nav.Link href="/playlists">All Playlists</Nav.Link>
                 <Nav.Link href="/videos">Search Videos</Nav.Link>

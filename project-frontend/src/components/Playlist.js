@@ -46,6 +46,7 @@ class Playlist extends React.Component {
      return (
          <div style={{backgroundColor: 'black', width: '300px', height: '300px', borderRadius: '5px', margin: '10px' }}>
              <h4 style={{color: 'white'}}>{this.props.playlist.title}</h4>
+             {/* <h3>Likes: {this.props.playlist.likes.length}</h3> */}
         <Carousel activeIndex={this.state.index} onSelect={(e)=> {this.handleSelect()}} style={{color: 'blue', width: '300px'}}>
             { this.props.videos.map(video => {
               return  video.playlist_id == this.props.playlist.id ? 

@@ -62,7 +62,7 @@ class PublicPlaylistContainer extends Component {
     render() {
         return(
             <div>This is Our Public Playlist Container<br></br>
-                Form for new Playlist:
+                Add a New Playlist!:
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" placeholder="Playlist name" onChange={this.handleChange}></input>
                     <input type="submit" className="btn btn-primary"></input>
