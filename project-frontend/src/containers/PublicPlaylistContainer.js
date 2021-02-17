@@ -3,7 +3,7 @@ import {Route} from 'react-router-dom'
 import Playlist from '../components/Playlist'
 import { withRouter } from 'react-router';
 
-class PlaylistContainer extends Component {
+class PublicPlaylistContainer extends Component {
 
     componentDidMount() {
         let token = localStorage.getItem("token")
@@ -61,7 +61,7 @@ class PlaylistContainer extends Component {
 
     render() {
         return(
-            <div>This is Our Playlist Container<br></br>
+            <div>This is Our Public Playlist Container<br></br>
                 Form for new Playlist:
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" placeholder="Playlist name" onChange={this.handleChange}></input>
@@ -77,4 +77,4 @@ class PlaylistContainer extends Component {
     }
 }
 
-export default PlaylistContainer
+export default PublicPlaylistContainer

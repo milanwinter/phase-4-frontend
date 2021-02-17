@@ -16,7 +16,7 @@ class PlaylistContainer extends Component {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data.user.playlists)
+            console.log(data)
             this.setState({
                 playlists: data.user.playlists,
                 videos: data.user.videos
@@ -63,7 +63,7 @@ class PlaylistContainer extends Component {
         return(
             <div>This is Our Playlist Container<br></br>
                 Form for new Playlist:
-                <form onSubmit={this.handleSubmit}>
+                <form className="form-control" onSubmit={this.handleSubmit}>
                     <input type="text" placeholder="Playlist name" onChange={this.handleChange}></input>
                     <input type="submit" className="btn btn-primary"></input>
                 </form>
