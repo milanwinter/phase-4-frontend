@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import Button from 'react-bootstrap/Button'
 import Login from '../components/Login'
 import Signup from '../components/Signup'
-import HomePage from '../components/HomePage'
 import PlaylistContainer from './PlaylistContainer'
 import { Redirect } from "react-router-dom";
 
@@ -15,6 +14,10 @@ class HomeContainer extends Component {
         user: "",
         userId: 1
     }
+
+
+
+    
     handleLoginChange = (e) => {
         this.setState({
           [e.target.name] : e.target.value
@@ -45,7 +48,7 @@ class HomeContainer extends Component {
           })
           localStorage.setItem("token", json.jwt)
           localStorage.setItem("user",json.user.id)
-          this.props.history.push("/profile")
+          this.props.history.push("/home")
         })
     
       }
@@ -53,7 +56,7 @@ class HomeContainer extends Component {
       loggedIn = () => {
         let token = localStorage.getItem("token")
           if (token) {
-               <Redirect to="/playlists" />
+               <Redirect to="/home" />
           } else {
               if (this.state.signup) {
                   return <Signup toggleLogin={this.toggleLogin}  handleLoginChange={this.handleLoginChange} handleSignupSubmit={this.handleSignupSubmit}/>
@@ -92,7 +95,7 @@ class HomeContainer extends Component {
           })
           localStorage.setItem("token", json.jwt)
           localStorage.setItem("user",json.user.id)
-          this.props.history.push("/profile")
+          this.props.history.push("/home")
         })
       }
 

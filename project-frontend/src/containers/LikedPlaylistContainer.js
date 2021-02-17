@@ -7,8 +7,13 @@ class LikedPlaylistContainer extends Component {
 
 
     componentDidMount() {
-       this.fetchLikedPlaylists()
-       this.fetchVideos()
+        let token = localStorage.getItem("token")
+        if (token) {
+            this.fetchLikedPlaylists()
+            this.fetchVideos()
+        } else {
+            this.props.history.push("/")
+        }
     }
 
     fetchLikedPlaylists = () =>  {

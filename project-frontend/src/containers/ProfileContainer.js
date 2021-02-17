@@ -18,7 +18,7 @@ class ProfileContainer extends Component {
     render() {
         return (
             <div className="profile-container" >
-                <Container >
+                <Container border="black" >
                     <Row>
                         <Col>
                         <h1> Your Playlists</h1>
@@ -26,7 +26,7 @@ class ProfileContainer extends Component {
                         </Col>
                         <Col>
                         <h1> Your Liked Playlists</h1>
-                        <LikedPlaylistContainer />
+                        <LikedPlaylistContainer history={this.props.history} />
                         </Col>
                     </Row>
                 </Container>
