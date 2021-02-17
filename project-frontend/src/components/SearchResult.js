@@ -21,6 +21,7 @@ class SearchResult extends React.Component {
         fetch('http://localhost:3000/playlists')
         .then(resp => resp.json())
         .then(data => { 
+          console.log(data)
           let playlists = data.filter(playlist => playlist.user.id == userId)
           console.log("in the video fetch")
           console.log(playlists)
