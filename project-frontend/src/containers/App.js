@@ -18,6 +18,10 @@ import HomePage from './HomePage'
 class App extends Component {
 
 
+  componentDidMount() {
+    document.body.style.backgroundColor = "#AFEEEE"
+  }
+
   handleUserInfo = (info) => {
     this.setState({
       userId: info
