@@ -21,9 +21,14 @@ class LikedPlaylistContainer extends Component {
         })
         .then(res => res.json())
         .then(data => {
-            this.setState({
-                likedPlaylists: data.liked_playlists
-            })
+           let likedPlaylists = []
+           data.liked_playlists.forEach(element => {
+               let playlist = {title: element.playlist.title, id: element.playlist.id, likes: element.likes }
+               likedPlaylists.push(playlist)
+           });
+           this.setState({
+               likedPlaylists: likedPlaylists
+           })
         })
     }
 
@@ -37,7 +42,9 @@ class LikedPlaylistContainer extends Component {
         })
         .then(res => res.json())
         .then(data => {
-            console.log("videos")
+            this.setState({
+                videos: data
+            })
         })
     }
 
@@ -52,7 +59,7 @@ class LikedPlaylistContainer extends Component {
 
         return (
             <div>
-                {this.state.likedPlaylists.length > 0 ? this.state.likedPlaylists.map(playlist => {return <Playlist playlist={playlist} />}) : null} 
+                {this.state.likedPlaylists.length > 0 ? this.state.likedPlaylists.map(playlist => {return <Playlist playlist={playlist} videos={this.state.videos}/>}) : null} 
             </div>
         )
     }

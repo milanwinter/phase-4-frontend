@@ -39,7 +39,7 @@ class Playlist extends React.Component {
      return (
         <div className="card"  >
             <p onClick={() => {this.toggleActive()}}>{this.props.playlist.title}</p>
-            {/* <p>Likes : {this.props.playlist.likes.length}</p> */}
+            <p>Likes : {this.props.playlist.likes.length}</p>
             {this.state.active ? <div>
                 <button onClick={() => {this.handleLike()}}>Like!</button>
             { this.props.videos.map(video => {

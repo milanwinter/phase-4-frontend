@@ -18,7 +18,10 @@ class ProfileContainer extends Component {
             <div >
                 <Container>
                     <h1> Hello from Profile container</h1>
+                    <h1> Your Playlists</h1>
                     <PlaylistContainer history={this.props.history}/>
+
+                    <h1> Your Liked Playlists</h1>
                     <LikedPlaylistContainer />
                     
                 </Container>
