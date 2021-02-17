@@ -68,7 +68,7 @@ class PlaylistContainer extends Component {
                     <input type="submit" className="btn btn-primary"></input>
                 </form>
                 {this.state.playlists.length > 0 ? this.state.playlists.map(playlist => {
-                    return <Playlist playlist={playlist} videos={this.state.videos}/>
+                    return<div style={{margin: '5px'}}> <Playlist playlist={playlist} videos={this.state.videos}/></div>
                 }): <p>You have no playlists.</p>}
 
             </div>
