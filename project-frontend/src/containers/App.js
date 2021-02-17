@@ -11,6 +11,7 @@ import Signup from '../components/Signup'
 import HomeContainer from './HomeContainer'
 import Logout from '../components/Logout'
 import ProfileContainer from './ProfileContainer'
+import PublicPlaylistContainer from './PublicPlaylistContainer'
 
 class App extends Component {
 
@@ -33,6 +34,7 @@ class App extends Component {
           <Route exact path='/' render={routerProps => <HomeContainer {...routerProps} handleUserInfo={this.handleUserInfo} />} />
           <Route exact path='/profile' render={routerProps => <ProfileContainer {...routerProps} /> } />
           <Route exact path='/videos' render={routerProps => <VideoContainer {...routerProps} /> } />
+          <Route exact path='/playlists' render={routerProps => <PublicPlaylistContainer {...routerProps} /> } />
           {/* <Route exact path='/' render={routerProps => <Profile {...routerProps} userId={this.state.userId} auth={this.state.isAuthenticated} /> } />  */}
           </div>
         </div>

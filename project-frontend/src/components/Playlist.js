@@ -30,7 +30,9 @@ class Playlist extends React.Component {
               user_id: userId
             })
         }).then(res => res.json())
-        .then(console.log)
+        this.setState({
+            likes: this.state.likes + 1
+        })
     }
 
    render () {

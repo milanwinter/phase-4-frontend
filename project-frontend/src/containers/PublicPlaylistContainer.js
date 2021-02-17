@@ -8,23 +8,23 @@ class PlaylistContainer extends Component {
     componentDidMount() {
         let token = localStorage.getItem("token")
         token ? (
-        fetch(`http://localhost:3000/api/v1/profile`,{
+        fetch(`http://localhost:3000/playlists`,{
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`
             }
         })
         .then(res => res.json())
-        .then(data => {
-            console.log(data.user.playlists)
-            this.setState({
-                playlists: data.user.playlists,
-                videos: data.user.videos
-            })
+        .then(playlists => this.setState({playlists}))) &&
+        fetch(`http://localhost:3000/videos`,{
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
         })
-    ) : this.props.history.push("/") 
+        .then(res => res.json()
+        .then(videos =>this.setState({videos}) )) : this.props.history.push("/") 
     }
-
     state = {
         playlists: [],
         newList: '',
