@@ -2,7 +2,10 @@ import React ,{Component,Redirect} from 'react'
 import {Route} from 'react-router-dom'
 import Playlist from '../components/Playlist'
 import { withRouter } from 'react-router';
-
+import PlaylistForm from '../components/PlaylistForm'
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 class PlaylistContainer extends Component {
 
     componentDidMount() {
@@ -31,6 +34,7 @@ class PlaylistContainer extends Component {
     }
 
     handleChange = (e) => {
+        console.log(e.target.value)
         let newList = e.target.value
         this.setState({newList})
       }
@@ -60,15 +64,21 @@ class PlaylistContainer extends Component {
 
     render() {
         return(
-            <div>This is Our Playlist Container<br></br>
-                Add a New Playlist:
-                <form className="form-control" onSubmit={this.handleSubmit}>
-                    <input type="text" placeholder="Playlist name" onChange={this.handleChange}></input>
-                    <input type="submit" className="btn btn-primary"></input>
-                </form>
-                {this.state.playlists.length > 0 ? this.state.playlists.map(playlist => {
-                    return<div style={{margin: '5px'}}> <Playlist playlist={playlist} videos={this.state.videos}/></div>
-                }): <p>You have no playlists.</p>}
+            <div>
+                <Container>
+                <Row>
+                    <Col>
+                        <PlaylistForm handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
+                    </Col>
+                    <Col> 
+                        <h1>Your Playlists</h1>
+                        {this.state.playlists.length > 0 ? this.state.playlists.map(playlist => {
+                            return<div style={{margin: '5px'}}> <Playlist playlist={playlist} videos={this.state.videos}/></div>
+                        }): <p>You have no playlists.</p>}
+                    </Col>
+                   
+                </Row>
+                </Container>
 
             </div>
 

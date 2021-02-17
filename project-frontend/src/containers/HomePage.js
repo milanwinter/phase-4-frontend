@@ -38,11 +38,10 @@ class HomePage extends Component {
     render() {
         return(
             <div>
-                <Container>
+                <Container fluid>
                     <h1 align= "center"> Welcome {this.state.user}! </h1> 
                     <Row>
                         <Col>
-                            <h1> Your Playlists!</h1>
                             <PlaylistContainer history={this.props.history} />
                         </Col>
 

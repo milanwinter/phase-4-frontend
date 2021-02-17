@@ -18,7 +18,7 @@ class ProfileContainer extends Component {
     render() {
         return (
             <div className="profile-container" >
-                <Container >
+                <Container border="black" >
                     <Row>
                         <Col>
                         <h1> Your Playlists</h1>
