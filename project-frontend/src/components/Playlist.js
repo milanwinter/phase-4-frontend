@@ -22,7 +22,8 @@ class Playlist extends React.Component {
         })
     }
 
-    handleLike = () => {
+    handleLike = (e) => {
+        e.stopPropagation()
         let token = localStorage.getItem("token")
         let userId = localStorage.getItem("user")
         fetch('http://localhost:3000/likes', {
@@ -43,20 +44,25 @@ class Playlist extends React.Component {
     }
 
    render () {
-     return (
-         <div style={{backgroundColor: 'black', width: '300px', height: '300px', borderRadius: '5px', margin: '10px' }}>
-             <h4 style={{color: 'white'}}>{this.props.playlist.title}</h4>
-        <Carousel activeIndex={this.state.index} onSelect={(e)=> {this.handleSelect()}} style={{color: 'blue', width: '300px'}}>
-            { this.props.videos.map(video => {
-              return  video.playlist_id == this.props.playlist.id ? 
-              <Carousel.Item style={{width: '100%', height: '250px', align: 'center'}}>
-              <Video video={video}style={{align: 'center'}}/> 
-              </Carousel.Item>: null})}
-        </Carousel>
-        </div>
-    )
-   }
+      return (
+           this.state.active ?
+                <div style={{backgroundColor: 'black', width: '300px', height: '300px', borderRadius: '5px', margin: '10px' }}>
+                    <h4 onClick={() => {this.toggleActive()}} style={{color: 'white'}}>{this.props.playlist.title}<button style={{float: 'right', color: 'red'}} className="btn danger" onClick={(e) => {this.handleLike(e)}}>	&#9829;</button></h4> 
+                <Carousel activeIndex={this.state.index} onSelect={(e)=> {this.handleSelect()}} style={{color: 'blue', width: '300px'}}>
+                    { this.props.videos.map(video => {
+                        return  video.playlist_id == this.props.playlist.id ? 
+                            <Carousel.Item style={{width: '100%', height: '250px', align: 'center'}}>
+                                <Video video={video}style={{align: 'center'}}/> 
+                            </Carousel.Item>: null})}
+                </Carousel>
+                </div>
+            : 
+                <div className="card">
+                    <p onClick={() => {this.toggleActive()}}>{this.props.playlist.title}</p>
+                </div> )
+     
 
+    }
 }
 export default Playlist
 
