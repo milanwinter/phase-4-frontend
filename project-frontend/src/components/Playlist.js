@@ -75,7 +75,7 @@ class Playlist extends React.Component {
                 </Carousel>
                 </div>
             : 
-                <div className="card">
+                <div className="card" style={{width: '10%', margin: '15px', backgroundColor: 'grey'}}>
                     <p onClick={() => {this.toggleActive()}}>{this.props.playlist.title}</p>
                 </div> )
      
