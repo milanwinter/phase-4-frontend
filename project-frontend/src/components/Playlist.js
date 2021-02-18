@@ -58,7 +58,8 @@ class Playlist extends React.Component {
             .then(json => {
                 console.log(json)
                 this.setState({
-                    liked: false
+                    liked: false,
+                    likes: this.state.likes -= 1 
                 })
                 if (this.props.fromLike) {
                     this.props.unLike(this.props.playlist.id)
@@ -81,8 +82,12 @@ class Playlist extends React.Component {
             })
         }).then(res => res.json())
             .then(json => {
+                console.log('creating a like')
+                console.log(json)
                  this.setState({
-                    liked: true
+                    liked: true,
+                    likes: this.state.likes +=1,
+                    like: [json]
                 })  
         })
         }
