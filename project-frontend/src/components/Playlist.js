@@ -43,11 +43,29 @@ class Playlist extends React.Component {
         })
     }
 
+    handleDestroy = (e, playlist) => {
+        e.stopPropagation()
+        let token = localStorage.getItem("token")
+        let userId = localStorage.getItem("user")
+        fetch (`http://localhost:3000/playlist/${playlist.id}`, {
+            method: "DESTROY",
+            headers: {
+                "Authorization" : `Bearer ${token}`,
+                "Content-Type" : "application/json",
+                "Accept" : "application/json"
+            },
+        }).then(res => res.json())
+
+    }
+
    render () {
       return (
            this.state.active ?
                 <div style={{backgroundColor: 'black', width: '300px', height: '300px', borderRadius: '5px', margin: '10px' }}>
-                    <h4 onClick={() => {this.toggleActive()}} style={{color: 'white'}}>{this.props.playlist.title}<button style={{float: 'right', color: 'red'}} className="btn danger" onClick={(e) => {this.handleLike(e)}}>	&#9829;</button></h4> 
+                    <h4 onClick={() => {this.toggleActive()}} style={{color: 'white'}}>{this.props.playlist.title}
+                    <button style={{float: 'right', color: 'red'}} className="btn danger" onClick={(e) => {this.handleLike(e)}}>	&#9829;</button>
+                    <button style={{float: 'right', color: 'blue'}} className="btn danger" onClick={(e) =>{this.handleDestroy(e, this.props.playlist)}}>x</button>
+                    </h4> 
                 <Carousel activeIndex={this.state.index} onSelect={(e)=> {this.handleSelect()}} style={{color: 'blue', width: '300px'}}>
                     { this.props.videos.map(video => {
                         return  video.playlist_id == this.props.playlist.id ? 
