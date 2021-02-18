@@ -46,9 +46,9 @@ class Playlist extends React.Component {
     handleDestroy = (e, playlist) => {
         e.stopPropagation()
         let token = localStorage.getItem("token")
-        let userId = localStorage.getItem("user")
+    
         fetch (`http://localhost:3000/playlist/${playlist.id}`, {
-            method: "DESTROY",
+            method: "DELETE",
             headers: {
                 "Authorization" : `Bearer ${token}`,
                 "Content-Type" : "application/json",
@@ -75,7 +75,7 @@ class Playlist extends React.Component {
                 </Carousel>
                 </div>
             : 
-                <div className="card" style={{width: '10%', margin: '15px', backgroundColor: 'grey'}}>
+                <div className="card" style={{width: '75x', margin: '15px', backgroundColor: 'grey'}}>
                     <p onClick={() => {this.toggleActive()}}>{this.props.playlist.title}</p>
                 </div> )
      
