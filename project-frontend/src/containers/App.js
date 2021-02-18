@@ -14,12 +14,10 @@ import ProfileContainer from './ProfileContainer'
 import PublicPlaylistContainer from './PublicPlaylistContainer'
 import HomePage from './HomePage'
 
-
 class App extends Component {
 
 
   componentDidMount() {
-    document.body.style.backgroundColor = "#AFEEEE"
   }
 
   handleUserInfo = (info) => {
@@ -34,9 +32,9 @@ class App extends Component {
     return (
       
       <Router>
-        <div >
+        <div  >
           <NavigationBar signOut={this.signOut} />
-          <div >
+          <div>
           <Route exact path='/' render={routerProps => <HomeContainer {...routerProps} handleUserInfo={this.handleUserInfo} />} />
           <Route exaxt path='/home' render={routerProps => <HomePage {...routerProps} /> } />
           <Route exact path='/profile' render={routerProps => <ProfileContainer {...routerProps} /> } />

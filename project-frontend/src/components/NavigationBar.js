@@ -15,7 +15,7 @@ const NavigationBar = (props) => {
     
     return (
     <div >
-            <Navbar bg="dark" variant="dark" >
+            <Navbar bg="primary" variant="dark" >
               <Container>
                 <Navbar.Brand >Website Name?</Navbar.Brand>
                 <Nav className="mr-auto">

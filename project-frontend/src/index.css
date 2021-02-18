@@ -35,3 +35,12 @@ code {
 .liked-playlists {
   flex-basis: auto
 }
+
+.navbar-header {
+  background-color: #F16E10;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
