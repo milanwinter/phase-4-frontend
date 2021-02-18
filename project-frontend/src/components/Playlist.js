@@ -8,8 +8,30 @@ class Playlist extends React.Component {
     state = {
         active: false,
         likes: 0,
-        index: 0
+        index: 0,
+        liked: false,
+        own: false
     }
+
+    componentDidMount() {
+        this.checkIfLiked()
+    }
+
+    checkIfLiked = () => {
+        let userId = localStorage.getItem("user")
+        let like = this.props.playlist.likes.filter(like => like.user_id == userId)
+        let owned = this.props.playlist.user_id == userId ? true : false
+        let value = like.length > 0 ? true : false
+       this.setState({
+           liked: value,
+           like: like,
+           own: owned,
+           likes: this.props.playlist.likes.length
+       })
+    }
+
+
+
     toggleActive= () => {
         this.setState({
             active: !this.state.active
@@ -26,7 +48,27 @@ class Playlist extends React.Component {
         e.stopPropagation()
         let token = localStorage.getItem("token")
         let userId = localStorage.getItem("user")
-        fetch('http://localhost:3000/likes', {
+
+        if (this.state.liked) {
+            let likeId = this.state.like[0].id
+            fetch(`http://localhost:3000/likes/${likeId}`,{
+                method: "DELETE"
+            })
+            .then(resp => resp.json())
+            .then(json => {
+                console.log(json)
+                this.setState({
+                    liked: false
+                })
+                if (this.props.fromLike) {
+                    this.props.unLike(this.props.playlist.id)
+                } else {
+                    console.log("nothing to do")
+                }
+
+            })
+        } else if (!this.state.liked && !this.state.own) {
+            fetch(`http://localhost:3000/likes`, {
             method: "POST",
             headers: {
               "Authorization" : `Bearer ${token}`,
@@ -38,9 +80,22 @@ class Playlist extends React.Component {
               user_id: userId
             })
         }).then(res => res.json())
-        this.setState({
-            likes: this.state.likes + 1
+            .then(json => {
+                 this.setState({
+                    liked: true
+                })  
         })
+        }
+
+
+
+
+
+
+
+
+        
+     
     }
 
     handleDestroy = (e, playlist) => {
@@ -68,11 +123,11 @@ class Playlist extends React.Component {
     }
 
    render () {
+       const changeColour = this.state.liked ? "red" : 'grey'
       return (
-           this.state.active ?
                 <div style={{backgroundColor: 'black', width: '300px', height: '300px', borderRadius: '5px', margin: '10px' }}>
                     <h4 onClick={() => {this.toggleActive()}} style={{color: 'white'}}>{this.props.playlist.title}
-                    <button style={{float: 'right', color: 'red'}} className="btn danger" onClick={(e) => {this.handleLike(e)}}>	&#9829;</button>
+                    <button style={{float: 'right', color: changeColour}} className="btn danger" onClick={(e) => {this.handleLike(e)}}> {this.state.likes}	&#9829;</button>
                     {this.checkBeforeDelete()}
                     {/* <button style={{float: 'right', color: 'blue'}} className="btn danger" onClick={(e) =>{this.handleDestroy(e, this.props.playlist)}}>x</button> */}
                     </h4> 
@@ -84,10 +139,7 @@ class Playlist extends React.Component {
                             </Carousel.Item>: null})}
                 </Carousel>
                 </div>
-            : 
-                <div className="card" style={{width: '300px', margin: '15px', backgroundColor: 'grey'}}>
-                    <bold onClick={() => {this.toggleActive()}} align="center" >{this.props.playlist.title}</bold>
-                </div> )
+           )
      
 
     }

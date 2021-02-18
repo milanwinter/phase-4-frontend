@@ -37,6 +37,13 @@ class LikedPlaylistContainer extends Component {
         })
     }
 
+    unLike = (playlistId) => {
+        let newPlaylists = this.state.likedPlaylists.filter(p => p.id != playlistId)
+        this.setState({
+            likedPlaylists: newPlaylists
+        })
+    }
+
     fetchVideos = () => {
         let token = localStorage.getItem("token")
         fetch('http://localhost:3000/videos',{
@@ -64,7 +71,7 @@ class LikedPlaylistContainer extends Component {
 
         return (
             <div>
-                {this.state.likedPlaylists.length > 0 ? this.state.likedPlaylists.map(playlist => {return <Playlist playlist={playlist} videos={this.state.videos}/>}) : null} 
+                {this.state.likedPlaylists.length > 0 ? this.state.likedPlaylists.map(playlist => {return <Playlist unLike={this.unLike} fromLike={true} playlist={playlist} videos={this.state.videos}/>}) : null} 
             </div>
         )
     }
