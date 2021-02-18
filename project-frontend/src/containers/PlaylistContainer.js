@@ -34,7 +34,6 @@ class PlaylistContainer extends Component {
     }
 
     handleChange = (e) => {
-        console.log(e.target.value)
         let newList = e.target.value
         this.setState({newList})
       }

@@ -67,7 +67,6 @@ class SearchResult extends React.Component {
       }
       //handle state for dropdown
       handleChoose(event) {
-        console.log(event.target.value)
         this.setState({
           activeList: event.target.value});
 
