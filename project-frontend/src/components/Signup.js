@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Form from 'react-bootstrap/Form'
 import FormFile from 'react-bootstrap/FormFile'
 import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
 
 
 class Signup extends Component {
@@ -12,6 +13,7 @@ class Signup extends Component {
     render() {
         return(
             <div>
+                <Container>
                 <Form>
                     <Form.Label> Signup</Form.Label>
                     <Form.Group >
@@ -33,6 +35,7 @@ class Signup extends Component {
                         I already have an account
                     </Button>
                 </Form>
+                </Container>
                 
             </div>
         )
