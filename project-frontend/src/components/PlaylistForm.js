@@ -8,7 +8,7 @@ function PlaylistForm(props) {
     return (
         <Form onSubmit={props.handleSubmit}> 
             <h3>Add Playlist</h3>
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group>
                 <Form.Label>New Playlist Name</Form.Label>
                 <Form.Control onChange={props.handleChange}type="text" placeholder="Enter Name" />
              </Form.Group>

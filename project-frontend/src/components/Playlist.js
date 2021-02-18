@@ -47,13 +47,8 @@ class Playlist extends React.Component {
         e.stopPropagation()
         let token = localStorage.getItem("token")
         let userId = localStorage.getItem("user")
-        fetch (`http://localhost:3000/playlist/${playlist.id}`, {
-            method: "DESTROY",
-            headers: {
-                "Authorization" : `Bearer ${token}`,
-                "Content-Type" : "application/json",
-                "Accept" : "application/json"
-            },
+        fetch (`http://localhost:3000/playlists/${playlist.id}`, {
+            method: "DELETE"
         }).then(res => res.json())
 
     }

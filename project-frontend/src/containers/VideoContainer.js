@@ -2,6 +2,7 @@ import React ,{Component} from 'react'
 import {Route} from 'react-router-dom'
 import SearchResult from '../components/SearchResult'
 import { withRouter } from 'react-router';
+import Container from 'react-bootstrap/Container'
 
 class VideoContainer extends Component {
 
@@ -15,7 +16,11 @@ class VideoContainer extends Component {
     }
     render() {
         return(
-            <div><SearchResult userId={this.props.userId}/></div>
+            <div>
+                <Container>
+                <SearchResult userId={this.props.userId}/>
+                </Container>
+            </div>
         )
     }
 }
