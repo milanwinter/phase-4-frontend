@@ -4,6 +4,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Key from './APIKey'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 const endpoint = `https://www.googleapis.com/youtube/v3/search?`
 const maxResults = `&type=video&part=snippet&maxResults=10&q=`
 
@@ -88,39 +93,42 @@ class SearchResult extends React.Component {
 
     render(){
         return (
-             <div className="container">
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text" placeholder="Search YouTube" className="rounded-pill" onChange={this.handleChange}></input>
-                    <input type="submit" className="btn btn-danger rounded-sm"></input>
-                </form>
-                <div className="row">
+             <div>
+               <Container>
+                 <Row>
+                   <Form onSubmit={this.handleSubmit}> 
+                      <h3>Search Youtube For Videos</h3>
+                      <Row>
+                      <Col xs="auto">
+                        <Form.Group >
+                            <Form.Control type="text" placeholder="Search" onChange={this.handleChange}/>
+                        </Form.Group>
+                      </Col>
+                        <Col xs="auto">
+                          <Button variant="primary" type="submit">
+                              Submit
+                          </Button>
+                        </Col>
+                      </Row>
+                    </Form>
+
+                 </Row>
+                <div className="row" style={{display: 'flex', flexDirection: 'row'}}>
                     <div className="col-md-12">
-
-                      {/* select dropdown for playlists */}
-                      {/* <select value={this.state.activeList} onChange={(e) => {this.handleChoose(e)}}>
-                        {this.state.playlists.length > 0 ? this.state.playlists.map(playlist => {
-                          return <option value={playlist.id}>{`${playlist.title}`}</option>
-                        }) : null}
-                      </select> */}
-
-                      {/* displays videos from the search */}
                         {this.state.videos.length > 0 ? this.state.videos.map(video => {
-                            return (<div>
+                            return (<div style={{flex: 1}}>
                               <Video video={video.id}/>
                               <DropdownButton id="dropdown-basic-button" title="Add Video to Playlist">
                                 {this.state.playlists.map(playlist => {
                                   return <Dropdown.Item onClick={(e)=> this.experimentalChoice(e,playlist.id,video)} value={playlist.id} >{playlist.title}</Dropdown.Item>
                                 })}
-                                {/* <Dropdown.Item onClick={(e)=> this.experimentalChoice(e)}>Action</Dropdown.Item>
-                                <Dropdown.Item onClick={(e)=> this.experimentalChoice(e)}>Another action</Dropdown.Item>
-                                <Dropdown.Item onClick={(e)=> this.experimentalChoice(e)}>Something else</Dropdown.Item> */}
                               </DropdownButton>
-                              {/* <button className="btn-danger"onClick={() => {this.newVideo(video)}}>Click me!</button> */}
-                              </div>)
+                              </div> )
                         }): null}
 
                     </div>
                 </div>
+                </Container>
             </div>
         )
     }
