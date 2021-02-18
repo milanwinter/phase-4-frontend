@@ -2,6 +2,7 @@ import React ,{Component,Redirect} from 'react'
 import {Route} from 'react-router-dom'
 import Playlist from '../components/Playlist'
 import { withRouter } from 'react-router';
+import Container from 'react-bootstrap/Container'
 
 class PublicPlaylistContainer extends Component {
 
@@ -61,16 +62,13 @@ class PublicPlaylistContainer extends Component {
 
     render() {
         return(
-            <div>This is Our Public Playlist Container<br></br>
-                Add a New Playlist!:
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text" placeholder="Playlist name" onChange={this.handleChange}></input>
-                    <input type="submit" className="btn btn-primary"></input>
-                </form>
+            <div>
+                <Container>
+                <h1>All Playlists</h1><br></br>
                 {this.state.playlists.length > 0 ? this.state.playlists.map(playlist => {
                     return <Playlist playlist={playlist} videos={this.state.videos}/>
                 }): <p>You have no playlists.</p>}
-
+                </Container>
             </div>
 
         )

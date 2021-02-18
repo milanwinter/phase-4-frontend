@@ -50,7 +50,21 @@ class Playlist extends React.Component {
         fetch (`http://localhost:3000/playlists/${playlist.id}`, {
             method: "DELETE"
         }).then(res => res.json())
+        .then(json => {
+            this.props.deletePlaylist(playlist)
 
+        })
+
+    }
+
+    checkBeforeDelete = () => {
+        let id = localStorage.getItem("user")
+        let playlistId = this.props.playlist.id
+        if(this.props.usersList) {
+            return <button style={{float: 'right', color: 'blue'}} className="btn danger" onClick={(e) =>{this.handleDestroy(e, this.props.playlist)}}>Delete List</button>
+        } else {
+            return null
+        }
     }
 
    render () {
@@ -59,7 +73,8 @@ class Playlist extends React.Component {
                 <div style={{backgroundColor: 'black', width: '300px', height: '300px', borderRadius: '5px', margin: '10px' }}>
                     <h4 onClick={() => {this.toggleActive()}} style={{color: 'white'}}>{this.props.playlist.title}
                     <button style={{float: 'right', color: 'red'}} className="btn danger" onClick={(e) => {this.handleLike(e)}}>	&#9829;</button>
-                    <button style={{float: 'right', color: 'blue'}} className="btn danger" onClick={(e) =>{this.handleDestroy(e, this.props.playlist)}}>x</button>
+                    {this.checkBeforeDelete()}
+                    {/* <button style={{float: 'right', color: 'blue'}} className="btn danger" onClick={(e) =>{this.handleDestroy(e, this.props.playlist)}}>x</button> */}
                     </h4> 
                 <Carousel activeIndex={this.state.index} onSelect={(e)=> {this.handleSelect()}} style={{color: 'blue', width: '300px'}}>
                     { this.props.videos.map(video => {
@@ -70,8 +85,8 @@ class Playlist extends React.Component {
                 </Carousel>
                 </div>
             : 
-                <div className="card" style={{width: '10%', margin: '15px', backgroundColor: 'grey'}}>
-                    <p onClick={() => {this.toggleActive()}}>{this.props.playlist.title}</p>
+                <div className="card" style={{width: '300px', margin: '15px', backgroundColor: 'grey'}}>
+                    <bold onClick={() => {this.toggleActive()}} align="center" >{this.props.playlist.title}</bold>
                 </div> )
      
 

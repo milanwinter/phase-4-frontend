@@ -40,16 +40,10 @@ class HomePage extends Component {
             <div>
                 <Container fluid>
                     <h1 align= "center"> Welcome {this.state.user}! </h1> 
-                    <Row>
-                        <Col>
-                            <PlaylistContainer history={this.props.history} />
-                        </Col>
-
-                        <Col>
+                        <Col align="center" >
                             <h1> Most Popular Public Playlists</h1>
                             <PopularPlaylists />
                         </Col>
-                    </Row>
                 </Container>
             </div>
             

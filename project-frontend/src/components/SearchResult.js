@@ -113,23 +113,21 @@ class SearchResult extends React.Component {
                     </Form>
 
                  </Row>
-                 <Row>
-                <div className="row">
+                <div className="row" style={{display: 'flex', flexDirection: 'row'}}>
                     <div className="col-md-12">
                         {this.state.videos.length > 0 ? this.state.videos.map(video => {
-                            return (<div>
+                            return (<div style={{flex: 1}}>
                               <Video video={video.id}/>
                               <DropdownButton id="dropdown-basic-button" title="Add Video to Playlist">
                                 {this.state.playlists.map(playlist => {
                                   return <Dropdown.Item onClick={(e)=> this.experimentalChoice(e,playlist.id,video)} value={playlist.id} >{playlist.title}</Dropdown.Item>
                                 })}
                               </DropdownButton>
-                              </div>)
+                              </div> )
                         }): null}
 
                     </div>
                 </div>
-                </Row>
                 </Container>
             </div>
         )

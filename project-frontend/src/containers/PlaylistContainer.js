@@ -61,6 +61,12 @@ class PlaylistContainer extends Component {
         ))
 }
 
+    deletePlaylist = (playlist) => {
+        this.setState(prevState => ({
+            playlists: prevState.playlists.filter(list => list != playlist)
+        }))
+    }
+
 
     render() {
         return(
@@ -71,9 +77,8 @@ class PlaylistContainer extends Component {
                         <PlaylistForm handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
                     </Col>
                     <Col> 
-                        <h1>Your Playlists</h1>
                         {this.state.playlists.length > 0 ? this.state.playlists.map(playlist => {
-                            return<div style={{margin: '5px'}}> <Playlist playlist={playlist} videos={this.state.videos}/></div>
+                            return<div style={{margin: '5px'}}> <Playlist deletePlaylist={this.deletePlaylist}usersList={true} playlist={playlist} videos={this.state.videos}/></div>
                         }): <p>You have no playlists.</p>}
                     </Col>
                    

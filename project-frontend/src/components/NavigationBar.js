@@ -22,7 +22,9 @@ const NavigationBar = (props) => {
                   <Nav.Link href="/home"> Home </Nav.Link>
                   <Nav.Link href="/profile"> My Profile/Playlists</Nav.Link>
                   <Nav.Link href="/playlists">All Playlists</Nav.Link>
-                  <Nav.Link href="/videos">Search Videos</Nav.Link>
+                  <Nav.Link href="/videos">Search Videos</Nav.Link>  
+                </Nav>
+                <Nav>
                   <Nav.Link href="#" onSelect={logout}> Logout</Nav.Link>
                 </Nav>
               </Container>
