@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button'
 
 function PlaylistForm(props) {
     return (
-        <Form onSubmit={props.handleSubmit} className="block-example border border-dark"> 
+        <Form onSubmit={props.handleSubmit} className="block-example border border-dark rounded"> 
             <h3>Add New Playlist</h3>
             <Form.Group>
                 <Form.Label>New Playlist Name</Form.Label>

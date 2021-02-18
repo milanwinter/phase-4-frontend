@@ -116,7 +116,7 @@ class SearchResult extends React.Component {
                 <div className="row" style={{display: 'flex', flexDirection: 'row'}}>
                     <div className="col-md-12">
                         {this.state.videos.length > 0 ? this.state.videos.map(video => {
-                            return (<div style={{flex: 1}}>
+                            return (<div style={{display: 'inline-block', width: '200px',  margin: '5px'}}>
                               <Video video={video.id}/>
                               <DropdownButton id="dropdown-basic-button" title="Add Video to Playlist">
                                 {this.state.playlists.map(playlist => {
