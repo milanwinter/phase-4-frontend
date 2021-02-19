@@ -150,15 +150,3 @@ class Playlist extends React.Component {
     }
 }
 export default Playlist
-
-        //<div className="card"  >
-        //     <p onClick={() => {this.toggleActive()}}>{this.props.playlist.title}</p>
-        //     <p>Likes : {this.props.playlist.likes.length}</p>
-        //     {this.state.active ? <div>
-        //         <button onClick={() => {this.handleLike()}}>Like!</button>
-        //     { this.props.videos.map(video => {
-        //      return  video.playlist_id == this.props.playlist.id ? <Video video={video}/> : null
-        //     })}
-        //     </div>  : null}
-           
-        // </div>
