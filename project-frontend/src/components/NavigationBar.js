@@ -17,7 +17,7 @@ const NavigationBar = (props) => {
     <div >
             <Navbar bg="primary" variant="dark" >
               <Container>
-                <Navbar.Brand >Website Name?</Navbar.Brand>
+                <Navbar.Brand >Hidden Lists</Navbar.Brand>
                 <Nav className="mr-auto">
                   <Nav.Link href="/home"> Home </Nav.Link>
                   <Nav.Link href="/profile"> My Profile/Playlists</Nav.Link>

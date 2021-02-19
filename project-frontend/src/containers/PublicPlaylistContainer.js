@@ -63,10 +63,10 @@ class PublicPlaylistContainer extends Component {
     render() {
         return(
             <div>
-                <Container>
+                <Container style={{width: 'window.InnerHeight'}} className="overflow-auto" style={{height: '900px'}}>
                 <h1>All Playlists</h1><br></br>
                 {this.state.playlists.length > 0 ? this.state.playlists.map(playlist => {
-                    return <Playlist playlist={playlist} videos={this.state.videos}/>
+                    return <div style={{display: 'inline-block', width: '200px',  marginLeft: '75px', marginRight: '75px'}}><Playlist playlist={playlist} videos={this.state.videos}/></div>
                 }): <p>You have no playlists.</p>}
                 </Container>
             </div>

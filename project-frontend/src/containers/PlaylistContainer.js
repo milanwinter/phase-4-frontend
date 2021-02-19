@@ -75,11 +75,13 @@ class PlaylistContainer extends Component {
                     <Col>
                         <PlaylistForm handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
                     </Col>
-                    <Col> 
+                </Row>
+                <Row>
+                    <div> 
                         {this.state.playlists.length > 0 ? this.state.playlists.map(playlist => {
-                            return<div style={{margin: '5px'}}> <Playlist deletePlaylist={this.deletePlaylist}usersList={true} playlist={playlist} videos={this.state.videos}/></div>
+                            return<div style={{display: 'inline-block', width: '25%',  marginRight: '120px', align: 'right'}}> <Playlist deletePlaylist={this.deletePlaylist}usersList={true} playlist={playlist} videos={this.state.videos}/></div>
                         }): <p>You have no playlists.</p>}
-                    </Col>
+                    </div>
                    
                 </Row>
                 </Container>

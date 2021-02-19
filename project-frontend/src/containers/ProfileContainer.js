@@ -6,6 +6,7 @@ import { withRouter } from 'react-router';
 import {Route} from 'react-router-dom'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class ProfileContainer extends Component {
 
@@ -19,12 +20,12 @@ class ProfileContainer extends Component {
         return (
             <div className="profile-container" >
                 <Container border="black" fluid >
-                    <Row>
-                        <Col>
-                        <h1 align="right" >Your Created Playlists</h1>
+                    <Row style={{width: '100%'}}>
+                        <Col className="overflow-auto" style={{height: '800px', align: 'right'}}>
+                        <h1 align="center" >Your Created Playlists</h1>
                         <PlaylistContainer history={this.props.history}/>
                         </Col>
-                        <Col>
+                        <Col className="overflow-auto" style={{height: '800px', align: 'left'}} >
                         <h1> Your Liked Playlists</h1>
                         <LikedPlaylistContainer history={this.props.history} />
                         </Col>

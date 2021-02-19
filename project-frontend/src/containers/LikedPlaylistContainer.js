@@ -71,7 +71,12 @@ class LikedPlaylistContainer extends Component {
 
         return (
             <div>
-                {this.state.likedPlaylists.length > 0 ? this.state.likedPlaylists.map(playlist => {return <Playlist unLike={this.unLike} fromLike={true} playlist={playlist} videos={this.state.videos}/>}) : null} 
+                {this.state.likedPlaylists.length > 0 ?
+                 this.state.likedPlaylists.map(playlist => {
+                     return( 
+                        <div style={{display: 'inline-block', width: '25%',  marginRight: '120px', align: 'right'}}>
+                            <Playlist unLike={this.unLike} fromLike={true} playlist={playlist} videos={this.state.videos}/>
+                        </div>)}) : null}
             </div>
         )
     }

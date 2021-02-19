@@ -52,9 +52,9 @@ class PopularPlaylist extends Component {
 
     render() {
         return(
-            <div>
+            <div >
                 {this.state.playlists.map(playlist => {
-                    return <Playlist playlist={playlist} videos={this.state.videos} />
+                    return <div style={{display: 'inline-block', width: '20%',  marginRight: '20px', align: 'left'}}> <Playlist playlist={playlist} videos={this.state.videos} /> </div>
                 })}
             </div>
 

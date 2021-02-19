@@ -40,7 +40,7 @@ class HomePage extends Component {
             <div>
                 <Container fluid>
                     <h1 align= "center"> Welcome {this.state.user}! </h1> 
-                        <Col align="center" >
+                        <Col align="center" style={{width: 'window.innerWidth'}} >
                             <h1> Most Popular Public Playlists</h1>
                             <PopularPlaylists />
                         </Col>
